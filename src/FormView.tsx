@@ -72,6 +72,12 @@ function LineView(props: LineProps) {
     if (state.error) {
       return <span class={S.error} title={state.error.stack}>{state.error.message}</span>;
     }
+    if (typeof(state.value) === 'number') {
+      if (state.value === 0) {
+        return '0';
+      }
+      return state.value.toFixed(2);
+    }
     return JSON.stringify(state.value, null, 1);
   });
 
